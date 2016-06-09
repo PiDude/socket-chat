@@ -37,9 +37,9 @@ app.get('/', function(request, response)  {
 });
 
 
-io.on('connection', function(socket)  {
-  console.log('a user is connected.');
-});
+var user = 1 ;
+
+io.on('connection', function(socket)  { console.log(' %d users connected.', user++); });
 
 
 http.listen(8080, function(){
