@@ -5,6 +5,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+
 //this is for getting the IP address
 
 var os = require('os');
@@ -34,15 +35,16 @@ for (var k in interfaces)  {
 
 app.get('/', function(request, response)  {
   response.sendFile(__dirname + '/index.html');
+//  response.send('<h1>HELLO Dr. JONES !!<h1>');
+
 });
 
 
-io.on('connection', function(socket)  {
-  console.log('a user is connected.');
-});
+var user = 1 ;
+io.on('connection', function(socket)  { console.log(' %d users connected.', user++); });
 
 
 http.listen(8080, function(){
-  console.log('listeining on %s:8080', ip_address);
+  console.log('listening on %s:8080', ip_address);
 });
 
